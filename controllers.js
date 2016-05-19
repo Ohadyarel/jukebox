@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$('#play').click(function() {
-		jb.playJB(jb.current_spot);
+		jb.playJB();
 	})
 	$('#pause').click(function() {
 		jb.pauseJB();
@@ -11,5 +11,8 @@ $(document).ready(function(){
 	$('#prev').click(function() {
 		playPrev();
 	})
-
+	$('#rand').click(function() {
+		console.log("clicked rand")
+		jb.shuffle = !jb.shuffle;
+	})
 })

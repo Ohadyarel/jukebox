@@ -8,9 +8,10 @@ function Song(title,artist,url) {
 
 // object constructor for Jukebox
 function Jukebox() {
+	
 	this.songs = [];
 	this.current_spot = 0;
-
+	this.shuffle = false;
 
 	// setting event listeners to all the songs in the Jukebox that will play the next song once the current song ends.
 	this.setListeners = function(){
@@ -26,12 +27,14 @@ function Jukebox() {
 	}
 
 	this.queue = function(song) {
+		var spot = this.songs.indexOf(song)
+		this.songs.splice(spot, 1);
 		this.songs.unshift(song);
 	}
 
 
-	this.playJB = function(spot) {
-		this.songs[spot].url.play();
+	this.playJB = function() {
+		this.songs[jb.current_spot].url.play();
 		display()
 	}
 
@@ -43,15 +46,19 @@ function Jukebox() {
 
 
 function playNext() {
-	// if statement for shuffle == true ??
 		jb.pauseJB()
 		jb.songs[jb.current_spot].url.currentTime = 0;
-		if (jb.current_spot + 1 < jb.songs.length) {
-			jb.current_spot += 1;
-			jb.playJB(jb.current_spot)
+		if (jb.shuffle) {
+			jb.current_spot = Math.floor(Math.random() * jb.songs.length);
+			jb.playJB();
 		} else {
-			jb.current_spot = 0
-			reset_display()
+			if (jb.current_spot + 1 < jb.songs.length) {
+				jb.current_spot += 1;
+				jb.playJB()
+			} else {
+				jb.current_spot = 0
+				reset_display()
+			}
 		}
 	}
 
@@ -60,7 +67,7 @@ function playPrev() {
 	jb.songs[jb.current_spot].url.currentTime = 0;
 	if (jb.current_spot - 1 >= 0) {
 		jb.current_spot -= 1;
-		jb.playJB(jb.current_spot)
+		jb.playJB()
 	} else {
 		jb.current_spot = 0;
 		reset_display();
