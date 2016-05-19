@@ -11,24 +11,26 @@
 	<script src="js/form.js"></script>
 </head>
 <body>
-	<div id="current_song_display">
-		<span id="song_title"></span>
-		<span id="song_artist"></span>
-		<span id="song_length"></span>
-	</div>
 
 	<div id="player">
-		<span id="prev" class="glyphicon glyphicon-backward"></span>
-		<span id="play" class="glyphicon glyphicon-play"></span>
-		<span id="pause" class="glyphicon glyphicon-pause"></span>
-		<span id="next" class="glyphicon glyphicon-forward"></span>
+		<div class="current_song_display">
+			<span id="song_title">---</span>
+			<span id="song_artist">---</span>
+			<span id="song_length"></span>
+		</div>
+		<div class="progress">
+		  <div id="song_progress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+		    <span class="sr-only">60% Complete</span>
+		  </div>
+		</div>
+		<div class="player_buttons">
+			<span id="prev" class="glyphicon glyphicon-backward"></span>
+			<span id="play" class="glyphicon glyphicon-play"></span>
+			<span id="pause" class="glyphicon glyphicon-pause"></span>
+			<span id="next" class="glyphicon glyphicon-forward"></span>
+			<div id="rand" class="glyphicon glyphicon-random"></div>
+		</div>
 	</div>
-
-	<!-- <div id="prev">Prev</div> -->
-	<!-- <div id="play">Play</div> -->
-	<div id="pause">Pause</div>
-	<!-- <div id="next">Next</div> -->
-	<div id="rand">Shuffle</div>
 
 	<div id="song-form">
 		<form id="new_song">

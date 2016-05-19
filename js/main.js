@@ -19,6 +19,9 @@ function Jukebox() {
 			this.songs[i].url.addEventListener('ended', function(){
 				playNext();
 			})
+			this.songs[i].url.addEventListener('timeupdate', function(){
+				$('#song_progress').css("width",getPerc() + "%")
+			})
 		}
 	}
 
@@ -76,16 +79,19 @@ function playPrev() {
 
 function display() {
 	$('#song_title').text(jb.songs[jb.current_spot].title)
-	$('#song_artist').text(jb.songs[jb.current_spot].artist)
+	$('#song_artist').text("by " + jb.songs[jb.current_spot].artist)
 	$('#song_length').text(Math.round(jb.songs[jb.current_spot].url.duration))
 }
 
 function reset_display() {
-	$('#song_title').text("")
-	$('#song_artist').text("")
+	$('#song_title').text("---")
+	$('#song_artist').text("---")
 	$('#song_length').text("")
 }
 
+function getPerc(){
+	return (jb.songs[jb.current_spot].url.currentTime * 100 / jb.songs[jb.current_spot].url.duration);
+}
 // setting up instances of songs and jukebox
 
 var song1 = new Song("song1","there","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
