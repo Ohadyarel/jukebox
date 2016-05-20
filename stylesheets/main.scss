@@ -1,0 +1,86 @@
+@import 'mixin';
+
+body {
+	background: url(/Users/ohadyarel/Desktop/nycda/w7/d01/jukebox/images/bg1-1.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*the player*/
+
+#player {
+	width: 80%;
+	height: 100px;
+	margin: 25px auto;
+	@include white(0.5);
+	// background: rgba(255,255,255,0.7);
+	border: 1px solid rgba(255,255,255,0.2);
+	border-radius: 1%;
+	padding: 5px;
+	text-align: center;
+}
+
+.current_song_display {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+#pause {
+	display: none;
+}
+
+.player_buttons {
+	width: 100%;
+	margin: 10px auto;
+	font-size: 2.5em;
+}
+
+.progress {
+	height: 3px;
+	margin: 5px 0;
+}
+#song_progress {
+	background: green;
+}
+
+/*the main wrapper containing the playlist and the form*/
+#wrapper {
+	width: 80%;
+	height: 400px;
+	margin: 20px auto;
+	@include white(0.5);
+	border: 1px solid rgba(255,255,255,0.2);
+	border-radius: 1%;
+	padding: 5px;
+}
+
+#navbar {
+	border: none;
+}
+
+#pl_tab {
+
+}
+
+/*the playlist*/
+#playlist {
+	height: 340px;
+	overflow: scroll;
+	border: 1px solid white;
+	border-radius: 1%;
+}
+
+#dropdownMenu1 {
+	float: right;
+	color: green;
+	background: none;
+	border: none;
+}
+
+/*the form to add song*/
+
+#song-form {
+	display: none;
+}
