@@ -61,6 +61,8 @@ function playNext() {
 			} else {
 				jb.current_spot = 0
 				reset_display()
+				document.getElementById('pause').style.display = "none"
+				document.getElementById('play').style.display = "inline-block"
 			}
 		}
 	}
@@ -74,6 +76,8 @@ function playPrev() {
 	} else {
 		jb.current_spot = 0;
 		reset_display();
+		document.getElementById('pause').style.display = "none"
+		document.getElementById('play').style.display = "inline-block"
 	}
 }
 
@@ -94,15 +98,15 @@ function getPerc(){
 }
 // setting up instances of songs and jukebox
 
-var song1 = new Song("song1","there","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
+var song1 = new Song("Amazing effect 1","the w's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
 
-var song2 = new Song("song2","there2","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/181[kb]cybersqueaks.aif.mp3")
+var song2 = new Song("Amazing effect 2","the ww's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/181[kb]cybersqueaks.aif.mp3")
 
-var song3 = new Song("song3","a3","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
+var song3 = new Song("Amazing effect 3","the www's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
 
-var song4 = new Song("song4","a4","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/181[kb]cybersqueaks.aif.mp3")
+var song4 = new Song("Amazing effect 4","the wwww's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/181[kb]cybersqueaks.aif.mp3")
 
-var song5 = new Song("song5","a5","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
+var song5 = new Song("Amazing effect 5","the wwwww's","/Users/ohadyarel/Downloads/Work.mp3")
 
 var jb = new Jukebox();
 jb.addSong(song1);

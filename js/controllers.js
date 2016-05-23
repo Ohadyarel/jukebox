@@ -22,8 +22,32 @@ $(document).ready(function(){
 
 
 	// playlist display
-	for (i=0;i<jb.songs.length;i++) {
-		$('#playlist').append('<div class="playlist_song"><h3 id="pl_title">' + jb.songs[i].title + '</h3><p id="pl_artist">' + jb.songs[i].artist + '</p><span class="glyphicon glyphicon-option-vertical"></span></div>')
+	function display_pl() {
+		$('#playlist').empty();
+		for (i=0;i<jb.songs.length;i++) {
+			$('#playlist').append('<div class="playlist_song" id="'+i+'"><h4 id="pl_title">' + jb.songs[i].title + '</h4><p id="pl_artist">' + jb.songs[i].artist + '</p></div><div class="to_top" id="'+i+'"><span id="queue_up" class="glyphicon glyphicon-download-alt"></span></div>')
+		}
+		$('.to_top').click(function(){
+			jb.queue(jb.songs[$(this).attr('id')])
+			console.log('click event for top song')
+			display_pl();
+			$('.to_top').first().hide()
+		})
 	}
+
+	display_pl();
 	$('#goaway').hide()
+
+//<span class="glyphicon glyphicon-option-vertical"></span>
+	
+	$('.to_top').first().hide()
+	$('.playlist_song').click(function(){
+		jb.current_spot = $(this).first().attr('id')
+		jb.playJB()
+		$('#play').hide();
+		$('#pause').show();
+	});
+
+
+
 })

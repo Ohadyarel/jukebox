@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>JUKEBOX</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -9,7 +10,9 @@
 	<script src="js/main.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/form.js"></script>
+
 </head>
+
 <body>
 
 	<div id="player">
@@ -32,28 +35,47 @@
 		</div>
 	</div>
 
-	<div id="wrapper">
-		<ul class="nav nav-tabs" role="tablist" id="navbar">
-	    <li id="pl_tab" role="presentation" class="active"><a href="#playlist" aria-controls="playlist" role="tab" data-toggle="tab">Playlist</a></li>
-	    <li id="add_tab" role="presentation"><a href="#song_form" aria-controls="song_form" role="tab" data-toggle="tab">Add Song</a></li>
-	  </ul>
-	  <div class="tab-content">
-	  	<div role="tabpanel" class="tab-pane fade in active" id="playlist">
-	  		<div class="playlist_song" id="goaway">
-	  			<h3 id="pl_title"></h3>
-	  			<p id="pl_artist"></p>
-			    <span class="glyphicon glyphicon-option-vertical"></span>
-	  		</div>
-	  	</div>
-			<div role="tabpanel" class="tab-pane fade" id="song_form">
-				<form id="new_song">
-					<input id="new_title" type="text" name="title" placeholder="Song title">
-					<input id="new_artist" type="text" name="artist" placeholder="Artist">
-					<input id="new_url" type="text" name="url" placeholder="URL">
-					<input id="play_next" type="checkbox" name="play_next">Play Next</input>
-					<input type="submit" value="Add Song">
-				</form>
-			</div>
+
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	  <div class="panel panel-default">
+	    <div class="panel-heading" role="tab" id="headingOne">
+	      <h4 class="panel-title">
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	          ADD SONG
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+	      <div class="panel-body">
+	        <form id="new_song">
+						<input id="new_title" type="text" name="title" placeholder="Song title">
+						<input id="new_artist" type="text" name="artist" placeholder="Artist">
+						<input id="new_url" type="text" name="url" placeholder="URL">
+						<input id="play_next" type="checkbox" name="play_next">Play Next</input>
+						<input type="submit" value="Add Song">
+					</form>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	    <div class="panel-heading" role="tab" id="headingTwo">
+	      <h4 class="panel-title">
+	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+	          PLAYLIST
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+	      <div class="panel-body">
+	        <div role="tabpanel" class="tab-pane fade in active" id="playlist">
+			  		<div class="playlist_song" id="goaway">
+			  			<h4 id="pl_title"></h4>
+			  			<p id="pl_artist"></p>
+					    <span class="glyphicon glyphicon-option-vertical"></span>
+			  		</div>
+		      </div>
+	    	</div>
+		  </div>
 		</div>
 	</div>
 

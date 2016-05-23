@@ -1,5 +1,5 @@
 body {
-  background: url(/Users/ohadyarel/Desktop/nycda/w7/d01/jukebox/images/bg1-1.jpg) no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1441803293480-6d6c52f377d9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=d9d0520d232f3ac43a3c92f5f1cdfb9a) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -8,16 +8,16 @@ body {
 /*the player*/
 #player {
   width: 80%;
-  height: 100px;
-  margin: 25px auto;
+  margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 1%;
   padding: 5px;
-  text-align: center; }
+  text-align: center;
+  margin-top: 25px; }
 
 .current_song_display {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold; }
 
 #pause {
@@ -25,7 +25,7 @@ body {
 
 .player_buttons {
   width: 100%;
-  margin: 10px auto;
+  margin: 10px auto 0 auto;
   font-size: 2.5em; }
 
 .progress {
@@ -36,30 +36,37 @@ body {
   background: green; }
 
 /*the main wrapper containing the playlist and the form*/
-#wrapper {
+#accordion {
   width: 80%;
-  height: 400px;
-  margin: 20px auto;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1%;
-  padding: 5px; }
-
-#navbar {
-  border: none; }
+  margin: 5px auto; }
+  #accordion .panel {
+    background: none; }
+  #accordion .panel-heading {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5); }
+    #accordion .panel-heading .panel-title {
+      font-size: 0.8em; }
+  #accordion .panel-body {
+    background-color: rgba(255, 255, 255, 0.5); }
 
 /*the playlist*/
 #playlist {
   height: 340px;
   overflow: scroll;
-  border: 1px solid white;
-  border-radius: 1%; }
+  border-radius: 1%;
+  border-bottom: 1px solid white; }
 
-#dropdownMenu1 {
+.playlist_song {
+  margin-top: 5px;
+  border-bottom: 1px solid white; }
+
+#queue_up {
   float: right;
-  color: green;
-  background: none;
-  border: none; }
+  top: -50px;
+  transform: rotateZ(180deg); }
+
+#pl_title {
+  margin: 0; }
 
 /*the form to add song*/
 #song-form {
