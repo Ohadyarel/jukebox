@@ -19,7 +19,6 @@ $(document).ready(function(){
 				listeners(jb.songs.length - 1);
 			}
 			display_pl();
-			$('.to_top').first().hide();
 			$('#submit').css('background','rgba(51, 142, 32, .7)')
 		} else {
 			console.log("failed")
