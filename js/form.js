@@ -1,20 +1,30 @@
+function listeners(i) {
+	jb.songs[i].url.addEventListener('ended', function(){
+		playNext();
+	})
+	jb.songs[i].url.addEventListener('timeupdate', function(){
+		$('#song_progress').css("width",getPerc() + "%")
+	})
+}
 $(document).ready(function(){
 	$('#new_song').submit(function(e){
 		e.preventDefault();
-		var tempSong = new Song($("#new_title").val(),$("#new_artist").val(),$("#new_url").val());
-		jb.addSong(tempSong);
-		if ($('#play_next').is(':checked')) {
-			console.log("box checked verify")
-			jb.queue(tempSong);
+		if ($("#new_title").val() && $("#new_artist").val() && $("#new_url").val()) {
+			var tempSong = new Song($("#new_title").val(),$("#new_artist").val(),$("#new_url").val());
+			jb.addSong(tempSong);
+			if ($('#play_next').is(':checked')) {
+				jb.queue(tempSong);
+				listeners(0);
+			} else {
+				listeners(jb.songs.length - 1);
+			}
+			display_pl();
+			$('.to_top').first().hide();
+			$('#submit').css('background','rgba(51, 142, 32, .7)')
+		} else {
+			console.log("failed")
+			$('#submit').css('background','rgba(255, 0, 0, .7)')
 		}
-		var x = jb.songs.length - 1
-		$('#playlist').append('<div class="playlist_song" id="'+x+'"><h4 id="pl_title">' + jb.songs[x].title + '</h4><p id="pl_artist">' + jb.songs[x].artist + '</p></div><div class="to_top" id="'+x+'"><span id="queue_up" class="glyphicon glyphicon-download-alt"></span></div>');
-		$('#'+x).first().click(function(){
-			jb.current_spot = x;
-			jb.playJB();
-			$('#play').hide();
-			$('#pause').show();
-		})
 		this.reset();
 	})
 });

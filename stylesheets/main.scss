@@ -6,7 +6,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
- // background: black;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /*the player*/
@@ -21,6 +21,10 @@ body {
 	padding: 5px;
 	text-align: center;
 	margin-top: 25px;
+}
+
+.active_shuffle {
+	color: rgba(51, 142, 32, .7)
 }
 
 .current_song_display {
@@ -38,10 +42,16 @@ body {
 	font-size: 2.5em;
 }
 
+#prog_bar {
+	height: 20px;
+	padding: 5px 0;
+}
+
 .progress {
 	height: 3px;
 	margin: 5px 0;
 }
+
 #song_progress {
 	background: green;
 }
@@ -71,7 +81,6 @@ body {
 	height: 340px;
 	overflow: scroll;
 	border-radius: 1%;
-	border-bottom: 1px solid white;
 }
 
 .playlist_song {
@@ -91,17 +100,69 @@ body {
 	margin: 0;
 }
 
-.to_top {
-	// -ms-transform: rotate(180deg); /* IE 9 */
- //  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  
-
+.to_top:hover {
+	color:rgba(255,0,0,.7);
 }
-
-
 
 /*the form to add song*/
 
-#song-form {
-	display: none;
+#new_song {
+	width: 85%;
+	margin: 0 auto;
+	input {
+		display: block;
+		width: 100%;
+		@include white(0.8);
+		margin: 5px 0;
+		padding-left: 2px;
+	}
+	input:focus {
+		outline: 1px solid rgba(241, 201, 126, .9);
+	}
+	#play_next {
+		width: 5%;
+		margin-top: 15px;
+		display: inline-block;
+	}
+	#submit {
+		width: 40%;
+		display: inline-block;
+		background: rgba(241, 201, 126, .7);
+		border: none;
+		float: right;
+		outline: none;
+		transition: all 0.30s ease-in-out;
+	}
+	#submit:hover {
+		background: rgb(241, 201, 126);
+	}
+	#submit:focus {
+		background: rgba(51, 142, 32, .7);
+	}
 }
+
+// changing the #accordion when the window is larger than 768px
+
+@media (min-width: 768px) {
+	#pl1 {
+		width: 39.5%;
+		float: left;
+	}
+
+	#pl2 {
+		margin: 0 0 0 1%;
+		width: 59.5%;
+		float: left;
+	}
+	#new_song{
+		input {
+			margin: 18px 0;
+		}
+		#play_next {
+			margin-top:28px;
+		}
+	}
+
+}
+
+

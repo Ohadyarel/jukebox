@@ -3,7 +3,8 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+  font-family: 'Ubuntu', sans-serif; }
 
 /*the player*/
 #player {
@@ -16,6 +17,9 @@ body {
   text-align: center;
   margin-top: 25px; }
 
+.active_shuffle {
+  color: rgba(51, 142, 32, 0.7); }
+
 .current_song_display {
   font-size: 1.2em;
   font-weight: bold; }
@@ -27,6 +31,10 @@ body {
   width: 100%;
   margin: 10px auto 0 auto;
   font-size: 2.5em; }
+
+#prog_bar {
+  height: 20px;
+  padding: 5px 0; }
 
 .progress {
   height: 3px;
@@ -53,8 +61,7 @@ body {
 #playlist {
   height: 340px;
   overflow: scroll;
-  border-radius: 1%;
-  border-bottom: 1px solid white; }
+  border-radius: 1%; }
 
 .playlist_song {
   margin-top: 5px;
@@ -68,8 +75,51 @@ body {
 #pl_title {
   margin: 0; }
 
+.to_top:hover {
+  color: rgba(255, 0, 0, 0.7); }
+
 /*the form to add song*/
-#song-form {
-  display: none; }
+#new_song {
+  width: 85%;
+  margin: 0 auto; }
+  #new_song input {
+    display: block;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 5px 0;
+    padding-left: 2px; }
+  #new_song input:focus {
+    outline: 1px solid rgba(241, 201, 126, 0.9); }
+  #new_song #play_next {
+    width: 5%;
+    margin-top: 15px;
+    display: inline-block; }
+  #new_song #submit {
+    width: 40%;
+    display: inline-block;
+    background: rgba(241, 201, 126, 0.7);
+    border: none;
+    float: right;
+    outline: none;
+    transition: all 0.30s ease-in-out; }
+  #new_song #submit:hover {
+    background: #f1c97e; }
+  #new_song #submit:focus {
+    background: rgba(51, 142, 32, 0.7); }
+
+@media (min-width: 768px) {
+  #pl1 {
+    width: 39.5%;
+    float: left; }
+
+  #pl2 {
+    margin: 0 0 0 1%;
+    width: 59.5%;
+    float: left; }
+
+  #new_song input {
+    margin: 18px 0; }
+  #new_song #play_next {
+    margin-top: 28px; } }
 
 /*# sourceMappingURL=main.css.map */

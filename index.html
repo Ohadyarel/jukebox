@@ -4,12 +4,15 @@
 
 	<title>JUKEBOX</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/form.js"></script>
+	<script src="js/background.js"></script>
+	<script src="js/breakpoint.js"></script>
 
 </head>
 
@@ -21,10 +24,11 @@
 			<span id="song_artist">---</span>
 			<span id="song_length"></span>
 		</div>
-		<div class="progress">
-		  <div id="song_progress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-		    <span class="sr-only">60% Complete</span>
-		  </div>
+		<div id="prog_bar">
+			<div class="progress">
+			  <div id="song_progress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+			  </div>
+			</div>
 		</div>
 		<div class="player_buttons">
 			<span id="prev" class="glyphicon glyphicon-backward"></span>
@@ -37,7 +41,7 @@
 
 
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-	  <div class="panel panel-default">
+	  <div id="pl1" class="panel panel-default">
 	    <div class="panel-heading" role="tab" id="headingOne">
 	      <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -51,13 +55,14 @@
 						<input id="new_title" type="text" name="title" placeholder="Song title">
 						<input id="new_artist" type="text" name="artist" placeholder="Artist">
 						<input id="new_url" type="text" name="url" placeholder="URL">
-						<input id="play_next" type="checkbox" name="play_next">Play Next</input>
-						<input type="submit" value="Add Song">
+						<input id="play_next" type="checkbox" name="play_next">
+						<span id="submit_text">Play Next</span>
+						<input id="submit" type="submit" value="Add Song">
 					</form>
 	      </div>
 	    </div>
 	  </div>
-	  <div class="panel panel-default">
+	  <div id="pl2" class="panel panel-default">
 	    <div class="panel-heading" role="tab" id="headingTwo">
 	      <h4 class="panel-title">
 	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -68,11 +73,6 @@
 	    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 	      <div class="panel-body">
 	        <div role="tabpanel" class="tab-pane fade in active" id="playlist">
-			  		<div class="playlist_song" id="goaway">
-			  			<h4 id="pl_title"></h4>
-			  			<p id="pl_artist"></p>
-					    <span class="glyphicon glyphicon-option-vertical"></span>
-			  		</div>
 		      </div>
 	    	</div>
 		  </div>

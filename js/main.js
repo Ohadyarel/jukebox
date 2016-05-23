@@ -32,7 +32,7 @@ function Jukebox() {
 	this.queue = function(song) {
 		var spot = this.songs.indexOf(song)
 		this.songs.splice(spot, 1);
-		this.songs.unshift(song);
+		this.songs.splice(this.current_spot,0,song);
 	}
 
 
@@ -45,21 +45,29 @@ function Jukebox() {
 		this.songs[this.current_spot].url.pause();
 	}
 
+	this.removeJB = function(spot) {
+		this.songs.splice(spot, 1);
+	}
+
 }
 
+// function for the next and previous buttons
 
 function playNext() {
 		jb.pauseJB()
-		jb.songs[jb.current_spot].url.currentTime = 0;
 		if (jb.shuffle) {
 			jb.current_spot = Math.floor(Math.random() * jb.songs.length);
+			jb.songs[jb.current_spot].url.currentTime = 0;
+
 			jb.playJB();
 		} else {
 			if (jb.current_spot + 1 < jb.songs.length) {
 				jb.current_spot += 1;
+				jb.songs[jb.current_spot].url.currentTime = 0;
 				jb.playJB()
 			} else {
 				jb.current_spot = 0
+				jb.songs[jb.current_spot].url.currentTime = 0;
 				reset_display()
 				document.getElementById('pause').style.display = "none"
 				document.getElementById('play').style.display = "inline-block"
@@ -81,10 +89,11 @@ function playPrev() {
 	}
 }
 
+// functions for show/hide the title and artist of the current song being played 
+
 function display() {
 	$('#song_title').text(jb.songs[jb.current_spot].title)
 	$('#song_artist').text("by " + jb.songs[jb.current_spot].artist)
-	$('#song_length').text(Math.round(jb.songs[jb.current_spot].url.duration))
 }
 
 function reset_display() {
@@ -93,27 +102,23 @@ function reset_display() {
 	$('#song_length').text("")
 }
 
+// returns the progess of the current song in percentage
 function getPerc(){
 	return (jb.songs[jb.current_spot].url.currentTime * 100 / jb.songs[jb.current_spot].url.duration);
 }
+
 // setting up instances of songs and jukebox
 
-var song1 = new Song("Amazing effect 1","the w's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
-
-var song2 = new Song("Amazing effect 2","the ww's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/181[kb]cybersqueaks.aif.mp3")
-
-var song3 = new Song("Amazing effect 3","the www's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/665[kb]darkplanet.aif.mp3")
-
-var song4 = new Song("Amazing effect 4","the wwww's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/VARIOUS/181[kb]cybersqueaks.aif.mp3")
-
-var song5 = new Song("Amazing effect 5","the wwwww's","/Users/ohadyarel/Downloads/Work.mp3")
+var song1 = new Song("Amazing effect 1","the w's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/SOUND%20FX%20ZOO%20AND%20NATURE/2243[kb]zoo.aif.mp3")
+var song2 = new Song("Amazing effect 2","the ww's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/SOUND%20FX%20ZOO%20AND%20NATURE/1377[kb]crazy_cat_yowl.aif.mp3")
+var song3 = new Song("Amazing effect 3","the www's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/SOUND%20FX%20ZOO%20AND%20NATURE/636[kb]junglebird.aif.mp3")
+var song4 = new Song("Amazing effect 4","the wwww's","http://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/SOUND%20FX%20ZOO%20AND%20NATURE/112[kb]cheesy_lofi_werewolf.aif.mp3")
 
 var jb = new Jukebox();
 jb.addSong(song1);
 jb.addSong(song2);
 jb.addSong(song3);
 jb.addSong(song4);
-jb.addSong(song5);
 jb.setListeners();
 
 
